@@ -8,15 +8,43 @@ package ui;
  *
  * @author danie
  */
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class MainJFrame extends javax.swing.JFrame {
-
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private String age;
+    private String phoneNumber;
+    private String email;
+    private ImageIcon pic;
+    
+    public void  UserInfo(String firstName, String lastName, String gender, String age, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+            
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+    }
+    
+    public void setPic(ImageIcon pic) { 
+        this.pic = pic;
     }
 
     /**
@@ -32,27 +60,69 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         TitleJLabel = new javax.swing.JLabel();
         JLabelName = new javax.swing.JLabel();
-        JTextFiledName = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        JTextFiledFirstName = new javax.swing.JTextField();
+        JTextFieldLastName = new javax.swing.JTextField();
+        JTextFieldAge = new javax.swing.JTextField();
+        JTextFieldPhoneNumber = new javax.swing.JTextField();
+        JTextFieldEmail = new javax.swing.JTextField();
         JButtonSubmit = new javax.swing.JButton();
         JLabelGender = new javax.swing.JLabel();
         JRadioButtonMale = new javax.swing.JRadioButton();
         JRadioButtonFemale = new javax.swing.JRadioButton();
         JRadioButtonOthers = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        JImageSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         TitleJLabel.setBackground(new java.awt.Color(255, 255, 255));
         TitleJLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TitleJLabel.setText("REGISTRATION");
 
-        JLabelName.setText("Name:");
+        JLabelName.setText("First Name:");
 
-        JTextFiledName.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Last Name:");
+
+        jLabel2.setText("Age:");
+
+        jLabel3.setText("Phone Number:");
+
+        jLabel4.setText("Email:");
+
+        JTextFiledFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFiledNameActionPerformed(evt);
+                JTextFiledFirstNameActionPerformed(evt);
+            }
+        });
+
+        JTextFieldLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldLastNameActionPerformed(evt);
+            }
+        });
+
+        JTextFieldAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldAgeActionPerformed(evt);
+            }
+        });
+
+        JTextFieldPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldPhoneNumberActionPerformed(evt);
+            }
+        });
+
+        JTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldEmailActionPerformed(evt);
             }
         });
 
@@ -82,53 +152,103 @@ public class MainJFrame extends javax.swing.JFrame {
         JRadioButtonOthers.setText("Prefer Not To Say");
         JRadioButtonOthers.setActionCommand("OTHERS");
 
+        jLabel5.setText("Photo:");
+
+        JImageSubmit.setText("Upload Image");
+        JImageSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JImageSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(TitleJLabel)
+                .addGap(163, 163, 163))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(JButtonSubmit))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(112, 112, 112)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(JLabelName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(JTextFiledFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(JTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
+                                        .addComponent(JTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TitleJLabel)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(JLabelName)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(JTextFiledName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(JLabelGender)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(JRadioButtonFemale)
-                                        .addComponent(JRadioButtonMale)
-                                        .addComponent(JRadioButtonOthers)))))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(JLabelGender))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(JTextFieldPhoneNumber)
+                                .addComponent(JTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                            .addComponent(JImageSubmit)
+                            .addComponent(JRadioButtonMale)
+                            .addComponent(JRadioButtonFemale)
+                            .addComponent(JRadioButtonOthers)
+                            .addComponent(JButtonSubmit))
+                        .addGap(19, 19, 19)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(TitleJLabel)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JLabelName)
-                    .addComponent(JTextFiledName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(JTextFiledFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(JTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(JTextFieldPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(JTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(JImageSubmit))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JLabelGender)
                     .addComponent(JRadioButtonMale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addComponent(JRadioButtonFemale)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JRadioButtonOthers)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JButtonSubmit)
-                .addGap(50, 50, 50))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,23 +265,74 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTextFiledNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFiledNameActionPerformed
+    private void JTextFiledFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFiledFirstNameActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_JTextFiledNameActionPerformed
+    }//GEN-LAST:event_JTextFiledFirstNameActionPerformed
 
     private void JButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonSubmitActionPerformed
         // TODO add your handling code here:
         try{
-            String name = this.JTextFiledName.getText();
+            String firstName = this.JTextFiledFirstName.getText();
+            String lastName = this.JTextFieldLastName.getText();
+            String age = this.JTextFieldAge.getText();
+            String email = this.JTextFieldEmail.getText();
+            String phoneNumber = this.JTextFieldPhoneNumber.getText();
             String gender = this.buttonGroupGender.getSelection().getActionCommand();
-            String displayMessage = "FullName: " + name + " \nGender: " + gender;
-            System.out.println(this.JTextFiledName.getText());
+            
+            if (!firstName.matches("[a-zA-Z ]+") || !lastName.matches("[a-zA-Z ]+")) {
+                JOptionPane.showMessageDialog(this, "Name should contain only letters.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+            
+            if (!age.matches("\\d+") || Integer.parseInt(age) < 0) {
+                JOptionPane.showMessageDialog(this, "Age must be a positive number >= 0.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; 
+            }
+            
+            if(!this._is_valid_phone_number(phoneNumber) || phoneNumber.isEmpty()) { 
+                JOptionPane.showMessageDialog(this, "Invalid phone number format.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            if(!this._is_valid_email(email) || email.isEmpty()) { 
+                JOptionPane.showMessageDialog(this, "Invalidemail format.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            // This will display the First and Last name
+            String displayMessage = "<html>Full Name: " + firstName + " " + lastName +
+                        "<br>Gender: " + gender +
+                        "<br>Phone Number: " + phoneNumber +
+                        "<br>Age: " + age +
+                        "<br>Email: " + email + 
+                        "<br>Profile Image: </html>";
+            
+            JPanel panel = new JPanel();
+            JLabel displayMessageLabel = new JLabel(displayMessage) ;
+            JLabel imageLabel = new JLabel(this.pic);
+            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); 
+            panel.add(displayMessageLabel);
+            panel.add(imageLabel);
+                        
+            
+            
+            System.out.println(this.JTextFiledFirstName.getText());
+            System.out.println(this.JTextFieldLastName.getText());
+            System.out.println(this.JTextFieldAge.getText());
+            System.out.println(this.JTextFieldPhoneNumber.getText());
+            System.out.println(this.JTextFieldEmail.getText());
+            System.out.println(this.pic.getImage());
+            System.out.println(this.JLabelGender.getText());
+            
+            
+            
             System.out.println(this.buttonGroupGender.getSelection().getActionCommand());
-            JOptionPane.showMessageDialog(this, displayMessage);
+            
+            JOptionPane.showMessageDialog(this, panel);
         }
         catch(NullPointerException ne) {
-            String errorMessage = "You must enter values in Name & Gender.";
+            String errorMessage = "You must enter all fields \n Phone number should be valid \n Email must be valid \n Photo must be choosen";
             JOptionPane.showMessageDialog(this, errorMessage);
         }
         catch(Exception e) { 
@@ -170,9 +341,53 @@ public class MainJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JButtonSubmitActionPerformed
 
+    private boolean _is_valid_phone_number(String phoneNumber) {
+        String regex = "^\\+?[0-9. ()-]{7,15}$";
+        return phoneNumber.matches(regex);
+    }
+    
+    private boolean _is_valid_email(String email) {
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + 
+                       "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(regex);
+    }
+
     private void JRadioButtonMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRadioButtonMaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JRadioButtonMaleActionPerformed
+
+    private void JTextFieldLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldLastNameActionPerformed
+
+    private void JTextFieldAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldAgeActionPerformed
+
+    private void JTextFieldPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldPhoneNumberActionPerformed
+
+    private void JTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldEmailActionPerformed
+
+    private void JImageSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JImageSubmitActionPerformed
+        // TODO add your handling code here:
+        JFileChooser file = new JFileChooser(); 
+        if(file.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) { 
+            try { 
+                BufferedImage img = ImageIO.read(file.getSelectedFile());
+                Image edited_image = img.getScaledInstance(120, 160, Image.SCALE_SMOOTH);
+                if (edited_image != null ){
+                    this.setPic(new ImageIcon(edited_image));
+                }
+            } catch (Exception ex) {
+               JOptionPane.showMessageDialog(this, "Please upload image correctly correctly.", "Error - Incorrect image", JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_JImageSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,14 +426,24 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonSubmit;
+    private javax.swing.JButton JImageSubmit;
     private javax.swing.JLabel JLabelGender;
     private javax.swing.JLabel JLabelName;
     private javax.swing.JRadioButton JRadioButtonFemale;
     private javax.swing.JRadioButton JRadioButtonMale;
     private javax.swing.JRadioButton JRadioButtonOthers;
-    private javax.swing.JTextField JTextFiledName;
+    private javax.swing.JTextField JTextFieldAge;
+    private javax.swing.JTextField JTextFieldEmail;
+    private javax.swing.JTextField JTextFieldLastName;
+    private javax.swing.JTextField JTextFieldPhoneNumber;
+    private javax.swing.JTextField JTextFiledFirstName;
     private javax.swing.JLabel TitleJLabel;
     private javax.swing.ButtonGroup buttonGroupGender;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
